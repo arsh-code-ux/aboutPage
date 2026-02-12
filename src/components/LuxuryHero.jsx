@@ -16,7 +16,7 @@ const LuxuryHero = ({ className = '' }) => {
             className="font-serif font-normal text-4xl sm:text-5xl md:text-6xl lg:text-6xl leading-snug tracking-tight uppercase"
           >
             <span className="block text-[#111827]">BRINGING <span className="italic text-[#D4AF37]">ARTISTS</span> &amp;</span>
-            <span className="block italic text-[#D4AF37]">ART LOVERS</span>
+            <span className="block"><span className="italic text-[#D4AF37]">ART LOVERS</span></span>
             <span className="block text-[#111827]">AT ONE STAGE</span>
           </h1>
 

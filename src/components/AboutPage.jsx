@@ -375,7 +375,7 @@ const AboutContentSection = () => {
             loading="lazy"
             onError={(e) => { e.currentTarget.style.display = 'none'; }}
             style={{ y: smoothY }}
-            className="w-full h-[640px] object-cover"
+            className="w-full h-[760px] md:h-[820px] lg:h-[880px] object-cover"
           />
         </motion.div>
       </div>
@@ -563,7 +563,7 @@ const TeamCard = ({ member, index }) => {
           />
 
           {/* Portrait (click to view larger) */}
-          <div className="relative w-32 h-32 mx-auto mb-6 overflow-hidden rounded-full">
+          <div className="relative w-40 h-40 mx-auto mb-6 overflow-hidden rounded-full">
             <img
               src={member.image}
               alt={member.name}

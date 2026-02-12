@@ -20,27 +20,27 @@ const timelineData = [
   },
   {
     year: 'Heritage',
+    title: 'A Brief History of Art',
     content: `India, being the oldest and the first in the culture and also it's first in producing the different kind of artifacts or arts.
 Be it Vatsyayana who introduced art of love through Kamasutra or Raja Ravi Verma who portrayed the beauty of woman on canvas and brought it to life through his vision.
 There were times when artists used to engrave their craft on stones and walls, and later on it all converted into papers, canvas and painters like Rabindranath Tagore, Vincent Van Gogh, M.F. Hussain, Pablo Picasso, Amrita Sher Gill, Leonardo Da Vinci, Claude Monet and many more brought arts to life through their skills.`,
-      'India, being the oldest and the first in the culture and also it\'s first in producing the different kind of artifacts or arts. Be it Vatsyayana who introduced art of love through Kamasutra or Raja Ravi Verma who portrayed the beauty of woman on canvas and brought it to life through his vision.',
     image: 'https://m.media-amazon.com/images/I/513rnVnTDeL._UF1000,1000_QL80_.jpg',
   },
   {
     year: 'Legacy',
-    content: `OUR MOTIVE
-
-We believe that art is a medium of communication, innovation and above all, an inspiration. So, we at Zigguratss brings you the worlds spectacular all the original arts from the artists across the globe.
-
-We provide artists the space which enables them to sell their artwork globally and connect with their respective audience and admirers and also manage the sale of their artwork, because art is valuable & precious and the artist should get proper acknowledge for their work.`,
+    title: 'The Lineage of Masters',
+    content:
       'There were times when artists used to engrave their craft on stones and walls, and later on it all converted into papers, canvas and painters like Rabindranath Tagore, Vincent Van Gogh, M.F. Hussain, Pablo Picasso, Amrita Sher Gill, Leonardo Da Vinci, Claude Monet and many more brought arts to life through their skills.',
     image: 'https://www.theartstory.org/images20/works/old_masters_2.jpg',
   },
   {
     year: 'Purpose',
     title: 'Our Motive',
-    content:
-      'We believe that art is a medium of communication, innovation and above all, an inspiration. So, we at Zigguratss brings you the worlds spectacular all the original arts from the artists across the globe.',
+    content: `OUR MOTIVE
+
+We believe that art is a medium of communication, innovation and above all, an inspiration. So, we at Zigguratss brings you the worlds spectacular all the original arts from the artists across the globe.
+
+We provide artists the space which enables them to sell their artwork globally and connect with their respective audience and admirers and also manage the sale of their artwork, because art is valuable & precious and the artist should get proper acknowledge for their work.`,
     image: 'https://zigguratss.com/assets/images/motiveimage.jpg',
   },
   {

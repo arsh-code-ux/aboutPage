@@ -303,7 +303,7 @@ const AboutContentSection = () => {
   return (
     <section className="w-full py-20 sm:py-28 bg-white">
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+        <div className="grid grid-cols-1 lg:[grid-template-columns:40%_60%] gap-10 items-center">
         {/* Text column */}
         <div>
           <motion.p

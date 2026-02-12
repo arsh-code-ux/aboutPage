@@ -532,7 +532,6 @@ const TeamSection = () => (
 const TeamCard = ({ member, index }) => {
   const ref = useRef(null);
   const [expanded, setExpanded] = useState(false);
-  const [showOverlay, setShowOverlay] = useState(false);
 
   const shortBio = member.bio.length > 180 ? member.bio.slice(0, 180) + '…' : member.bio;
 
@@ -564,7 +563,7 @@ const TeamCard = ({ member, index }) => {
           />
 
           {/* Portrait (click to view larger) */}
-          <div className="relative w-24 h-24 mx-auto mb-6 overflow-hidden rounded-full cursor-pointer" onClick={(e) => { e.stopPropagation(); setShowOverlay(true); }}>
+          <div className="relative w-32 h-32 mx-auto mb-6 overflow-hidden rounded-full">
             <img
               src={member.image}
               alt={member.name}
@@ -618,19 +617,7 @@ const TeamCard = ({ member, index }) => {
         </div>
       </div>
 
-      {/* Full-image overlay (no rotation) */}
-      {showOverlay && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-6" onClick={() => setShowOverlay(false)}>
-          <div className="relative w-full max-w-3xl">
-            <img
-              src={member.image}
-              alt={`${member.name} full`}
-              className="w-full h-auto rounded-lg shadow-2xl cursor-pointer"
-              onClick={() => setShowOverlay(false)}
-            />
-          </div>
-        </div>
-      )}
+      {/* overlay preview removed per UX request */}
     </motion.div>
   );
 };

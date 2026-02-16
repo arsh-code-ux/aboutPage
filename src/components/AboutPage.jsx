@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState, useCallback } from 'react';
 import Navbar from './Navbar';
 import LuxuryHero from './LuxuryHero';
+import RevealOnScroll from './RevealOnScroll';
 import { motion, useScroll, useTransform, useSpring, useInView, useMotionValue } from 'framer-motion';
 
 // Easing constant used across components
@@ -923,70 +924,69 @@ const artForms = [
     desc: 'Three-dimensional works of art made from stone, wood, or metal.'
   },
   {
-    name: 'Serigraph',
+    name: 'Digital Artwork',
     icon: <SerigraphIcon />,
-    desc: 'Limited edition prints made by pressing ink through a stencil.'
+    desc: 'Art created using digital tools such as graphic tablets, design software, and computers.'
   },
   {
-    name: 'Photography',
+    name: 'Drawing',
     icon: <PhotographyIcon />,
-    desc: 'The art of capturing light to create an image.'
+    desc: 'The art of creating images using lines, shapes, and shading with tools like pencils, pens, or charcoal.'
   },
 ];
 
 const ArtworksBriefSection = () => (
-  <section className="relative py-32 sm:py-40 bg-gallery-warm overflow-hidden">
+  <RevealOnScroll as="section" className="relative py-32 sm:py-40 bg-gallery-warm overflow-hidden">
     <div className="absolute inset-0 bg-grain opacity-20 pointer-events-none" />
     <div className="relative z-10 max-w-6xl mx-auto px-6 sm:px-10 lg:px-16">
-      <motion.h2
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1.2, ease: EASE }}
-        className="font-serif text-4xl sm:text-5xl lg:text-6xl text-gallery-dark mb-8 text-center"
-      >
-        A Brief about <span className="italic text-gallery-accent">Artworks</span>
-      </motion.h2>
-      <motion.p
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1, ease: EASE, delay: 0.1 }}
-        className="font-sans text-lg text-gallery-muted text-center max-w-3xl mx-auto mb-12"
-      >
-        All Artworks have the power to captivate and inspire. Paintings are works of art that are created using pigments applied to a flat surface. Sculptures, on the other hand, are three-dimensional works of art that are typically made from materials such as stone, wood, or metal. Serigraphs, also known as silkscreen prints, are limited edition prints made by pressing ink through a stencil onto paper or fabric. Photography, meanwhile, is the art of capturing light to create an image. Whether it's through the lens of a camera or the brush strokes of a painter, each of these art forms has the ability to evoke emotions, tell a story, and bring joy to those who experience them. <span className="text-gallery-accent font-semibold">There are many other forms of artwork created by artists, and we are on a mission to make those artworks available to art lovers and bring artists—the creators of phenomenal work—to the front stage.</span>
-      </motion.p>
+      <RevealOnScroll>
+        <motion.h2
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.2, ease: EASE }}
+          className="font-serif text-4xl sm:text-5xl lg:text-6xl text-gallery-dark mb-8 text-center"
+        >
+          A Brief about <span className="italic text-gallery-accent">Artworks</span>
+        </motion.h2>
+      </RevealOnScroll>
+      <RevealOnScroll>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, ease: EASE, delay: 0.1 }}
+          className="font-sans text-lg text-gallery-muted text-center max-w-3xl mx-auto mb-12"
+        >
+          All Artworks have the power to captivate and inspire. Paintings are works of art that are created using pigments applied to a flat surface. Sculptures, on the other hand, are three-dimensional works of art that are typically made from materials such as stone, wood, or metal. Digital Artwork is art created using digital tools such as graphic tablets, design software, and computers. Drawing is the art of creating images using lines, shapes, and shading with tools like pencils, pens, or charcoal. Whether it's through the lens of a camera or the brush strokes of a painter, each of these art forms has the ability to evoke emotions, tell a story, and bring joy to those who experience them. <span className="text-gallery-accent font-semibold">There are many other forms of artwork created by artists, and we are on a mission to make those artworks available to art lovers and bring artists—the creators of phenomenal work—to the front stage.</span>
+        </motion.p>
+      </RevealOnScroll>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-12">
         {artForms.map((form, i) => (
-          <motion.div
-            key={form.name}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: i * 0.1 }}
-            className="flex flex-col items-center bg-white/70 rounded-xl p-6 shadow-lg hover:shadow-2xl transition-shadow duration-300 group cursor-pointer"
-            whileHover={{ scale: 1.06, y: -6 }}
-            data-magnetic
-          >
-            <div className="mb-4">{form.icon}</div>
-            <h4 className="font-serif text-xl text-gallery-dark mb-2 group-hover:text-gallery-accent transition-colors duration-300">{form.name}</h4>
-            <p className="font-sans text-sm text-gallery-muted text-center">{form.desc}</p>
-          </motion.div>
+          <RevealOnScroll key={form.name}>
+            <div className="flex flex-col items-center bg-white/70 rounded-xl p-6 shadow-lg hover:shadow-2xl transition-shadow duration-300 group cursor-pointer" data-magnetic>
+              <div className="mb-4">{form.icon}</div>
+              <h4 className="font-serif text-xl text-gallery-dark mb-2 group-hover:text-gallery-accent transition-colors duration-300">{form.name}</h4>
+              <p className="font-sans text-sm text-gallery-muted text-center">{form.desc}</p>
+            </div>
+          </RevealOnScroll>
         ))}
       </div>
-      <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, delay: 0.2 }}
-        className="text-center"
-      >
-        <span className="inline-block px-8 py-4 bg-gallery-accent text-gallery-dark font-sans text-base font-semibold rounded-full shadow-lg tracking-wide animate-pulse cursor-pointer select-none">
-          Discover More Art Forms
-        </span>
-      </motion.div>
+      <RevealOnScroll>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="text-center"
+        >
+          <span className="inline-block px-8 py-4 bg-gallery-accent text-gallery-dark font-sans text-base font-semibold rounded-full shadow-lg tracking-wide animate-pulse cursor-pointer select-none">
+            Discover More Art Forms
+          </span>
+        </motion.div>
+      </RevealOnScroll>
     </div>
-  </section>
+  </RevealOnScroll>
 );
 
 const AboutPage = () => (

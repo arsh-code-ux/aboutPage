@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState, useCallback } from 'react';
 import Navbar from './Navbar';
 import LuxuryHero from './LuxuryHero';
+import ImmersiveScroll from './ImmersiveScroll';
 import RevealOnScroll from './RevealOnScroll';
 import { motion, useScroll, useTransform, useSpring, useInView, useMotionValue } from 'framer-motion';
 
@@ -634,38 +635,42 @@ const values = [
   {
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 8c-1.657 0-3 1.567-3 3.5S10.343 15 12 15s3-1.567 3-3.5S13.657 8 12 8z" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v2m0 14v2M4.2 6.2l1.4 1.4M18.4 18.4l1.4 1.4M3 12h2m14 0h2M4.2 17.8l1.4-1.4M18.4 5.6l1.4-1.4" />
       </svg>
     ),
-    title: 'Free Shipping World Wide',
-    description: 'By Professionals.',
+    title: 'Curated Selection',
+    description: 'Hand-picked works by our curatorial team.',
   },
   {
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182M2.985 19.644l3.181-3.183" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 11c1.657 0 3-1.567 3-3.5S13.657 4 12 4s-3 1.567-3 3.5S10.343 11 12 11z" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M4 13c2 4 6 7 8 7s6-3 8-7" />
       </svg>
     ),
-    title: 'Money Back Guarantee',
-    description: 'Within 14 days after delivery.',
+    title: 'Authenticity Guarantee',
+    description: 'All works are verified by experts.',
   },
   {
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M3 7h18M7 7v10a4 4 0 004 4h2a4 4 0 004-4V7" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V5a4 4 0 014-4h0a4 4 0 014 4v2" />
       </svg>
     ),
-    title: 'Selected Artist',
-    description: "Artist's around the world.",
+    title: 'Bespoke Consultation',
+    description: 'Guidance to place art in your space.',
   },
   {
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 11V7m0 8v-2" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14" />
       </svg>
     ),
-    title: 'Secure Payments',
-    description: 'By credit card or online.',
+    title: 'Dedicated Support',
+    description: 'Assistance at every step of your purchase.',
   },
 ];
 
@@ -768,6 +773,67 @@ const ClosingCTA = () => {
           For suggestions to buy art for their home and office. Live with Art —
           Live with Zigguratss.
         </motion.p>
+
+        {/* Features grid requested: Free Shipping, Money Back, Selected Artist, Secure Payments */}
+        <motion.div
+          initial={{ opacity: 0, y: 8 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.35 }}
+          className="max-w-3xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8"
+        >
+          <div className="flex items-start gap-4 bg-white/3 p-4 rounded-md">
+            <div className="flex-shrink-0 w-10 h-10 rounded-md bg-gallery-accent/10 flex items-center justify-center text-gallery-accent">
+              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <path d="M3 7h18" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M3 12h18" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </div>
+            <div>
+              <div className="font-serif text-lg text-white">Free Shipping World Wide</div>
+              <div className="text-sm text-white/60">By Professionals.</div>
+            </div>
+          </div>
+
+          <div className="flex items-start gap-4 bg-white/3 p-4 rounded-md">
+            <div className="flex-shrink-0 w-10 h-10 rounded-md bg-gallery-accent/10 flex items-center justify-center text-gallery-accent">
+              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <path d="M12 8v8" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M8 12h8" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </div>
+            <div>
+              <div className="font-serif text-lg text-white">Money Back Guarantee</div>
+              <div className="text-sm text-white/60">Within 14 days after delivery.</div>
+            </div>
+          </div>
+
+          <div className="flex items-start gap-4 bg-white/3 p-4 rounded-md">
+            <div className="flex-shrink-0 w-10 h-10 rounded-md bg-gallery-accent/10 flex items-center justify-center text-gallery-accent">
+              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <circle cx="12" cy="8" r="2" />
+                <path d="M4 20c1.5-4 6-6 8-6s6.5 2 8 6" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </div>
+            <div>
+              <div className="font-serif text-lg text-white">Selected Artist</div>
+              <div className="text-sm text-white/60">Artists around the world.</div>
+            </div>
+          </div>
+
+          <div className="flex items-start gap-4 bg-white/3 p-4 rounded-md">
+            <div className="flex-shrink-0 w-10 h-10 rounded-md bg-gallery-accent/10 flex items-center justify-center text-gallery-accent">
+              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <rect x="3" y="7" width="18" height="10" rx="2" />
+                <path d="M7 11h10" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </div>
+            <div>
+              <div className="font-serif text-lg text-white">Secure Payments</div>
+              <div className="text-sm text-white/60">By credit card or online.</div>
+            </div>
+          </div>
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -950,16 +1016,33 @@ const ArtworksBriefSection = () => (
           A Brief about <span className="italic text-gallery-accent">Artworks</span>
         </motion.h2>
       </RevealOnScroll>
+      <div className="absolute inset-0 pointer-events-none">
+        <img
+          src="https://images.unsplash.com/photo-1504198453319-5ce911bafcde?q=80&w=2000&auto=format&fit=crop"
+          alt="decorative background"
+          className="w-full h-[130%] object-cover opacity-10 scale-105"
+        />
+      </div>
+
       <RevealOnScroll>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1, ease: EASE, delay: 0.1 }}
-          className="font-sans text-lg text-gallery-muted text-center max-w-3xl mx-auto mb-12"
-        >
-          All Artworks have the power to captivate and inspire. Paintings are works of art that are created using pigments applied to a flat surface. Sculptures, on the other hand, are three-dimensional works of art that are typically made from materials such as stone, wood, or metal. Digital Artwork is art created using digital tools such as graphic tablets, design software, and computers. Drawing is the art of creating images using lines, shapes, and shading with tools like pencils, pens, or charcoal. Whether it's through the lens of a camera or the brush strokes of a painter, each of these art forms has the ability to evoke emotions, tell a story, and bring joy to those who experience them. <span className="text-gallery-accent font-semibold">There are many other forms of artwork created by artists, and we are on a mission to make those artworks available to art lovers and bring artists—the creators of phenomenal work—to the front stage.</span>
-        </motion.p>
+        <div className="max-w-4xl mx-auto mb-12 px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, ease: EASE, delay: 0.1 }}
+            className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 md:p-12 shadow-xl"
+          >
+            <p className="font-serif text-xl md:text-2xl text-gallery-dark leading-relaxed text-center">
+              All Artworks have the power to captivate and inspire. Whether it's
+              through the lens of a camera or the brush strokes of a painter,
+              each of these art forms has the ability to evoke emotions, tell
+              a story, and bring joy to those who experience them.
+            </p>
+
+            <span className="block mt-4 text-sm text-gallery-accent text-center">— Zigguratss Manifesto</span>
+          </motion.div>
+        </div>
       </RevealOnScroll>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-12">
         {artForms.map((form, i) => (
@@ -989,18 +1072,126 @@ const ArtworksBriefSection = () => (
   </RevealOnScroll>
 );
 
-const AboutPage = () => (
-  <main className="relative bg-gallery-bg overflow-hidden">
-    <Navbar />
-    <AboutContentSection />
-    <TimelineSection />
-    <ArtworksBriefSection />
-    <QuoteBreak />
-    <TeamSection />
-    <ValuesSection />
-    <ClosingCTA />
-    <Footer />
-  </main>
-);
+const AboutPage = () => {
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    let isThrottled = false;
+    let touchStartY = 0;
+
+    const getSections = () => Array.from(container.querySelectorAll('section.snap-start'));
+
+    const clamp = (n) => Math.max(0, Math.min(getSections().length - 1, n));
+
+    function getCurrentIndex() {
+      const scroll = container.scrollTop;
+      const secs = getSections();
+      let idx = 0;
+      for (let i = 0; i < secs.length; i++) {
+        if (scroll >= secs[i].offsetTop - 2) idx = i;
+      }
+      return idx;
+    }
+
+    function scrollToIndex(i) {
+      const secs = getSections();
+      const target = secs[clamp(i)];
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function onWheel(e) {
+      e.preventDefault();
+      if (isThrottled) return;
+      isThrottled = true;
+      const delta = e.deltaY;
+      const idx = getCurrentIndex();
+      if (delta > 0) scrollToIndex(idx + 1);
+      else if (delta < 0) scrollToIndex(idx - 1);
+      setTimeout(() => (isThrottled = false), 600);
+    }
+
+    function onTouchStart(e) {
+      touchStartY = e.touches[0].clientY;
+    }
+
+    function onTouchEnd(e) {
+      const delta = touchStartY - e.changedTouches[0].clientY;
+      if (Math.abs(delta) < 50) return;
+      const idx = getCurrentIndex();
+      if (delta > 0) scrollToIndex(idx + 1);
+      else scrollToIndex(idx - 1);
+    }
+
+    container.addEventListener('wheel', onWheel, { passive: false });
+    container.addEventListener('touchstart', onTouchStart, { passive: true });
+    container.addEventListener('touchend', onTouchEnd, { passive: true });
+
+    return () => {
+      container.removeEventListener('wheel', onWheel);
+      container.removeEventListener('touchstart', onTouchStart);
+      container.removeEventListener('touchend', onTouchEnd);
+    };
+  }, []);
+
+  return (
+    <main ref={containerRef} className="h-screen w-full overflow-y-scroll snap-y snap-mandatory relative" style={{ touchAction: 'pan-y' }}>
+      {/* Persistent fixed background layer */}
+      <div className="fixed inset-0 -z-10 bg-gallery-bg">
+        <div className="absolute inset-0 bg-gradient-to-b from-white/5 via-transparent to-white/5" />
+      </div>
+
+      <div className="fixed top-6 left-0 right-0 z-40 pointer-events-none">
+        <div className="max-w-7xl mx-auto px-6 pointer-events-auto">
+          <Navbar />
+        </div>
+      </div>
+
+      <section className="h-screen w-full snap-start flex items-center justify-center">
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ amount: 0.5 }} className="w-full">
+          <AboutContentSection />
+        </motion.div>
+      </section>
+
+      <section className="h-screen w-full snap-start flex items-center justify-center">
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ amount: 0.5 }} className="w-full">
+          <TimelineSection />
+        </motion.div>
+      </section>
+
+      <section className="h-screen w-full snap-start flex items-center justify-center">
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ amount: 0.5 }} className="w-full">
+          <ArtworksBriefSection />
+        </motion.div>
+      </section>
+
+      <section className="h-screen w-full snap-start flex items-center justify-center">
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ amount: 0.5 }} className="w-full">
+          <QuoteBreak />
+        </motion.div>
+      </section>
+
+      <section className="h-screen w-full snap-start flex items-center justify-center">
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ amount: 0.5 }} className="w-full">
+          <TeamSection />
+        </motion.div>
+      </section>
+
+      {/* ValuesSection removed per request */}
+
+      <section className="h-screen w-full snap-start flex items-center justify-center">
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ amount: 0.5 }} className="w-full">
+          <ClosingCTA />
+        </motion.div>
+      </section>
+
+      <footer className="w-full">
+        <Footer />
+      </footer>
+    </main>
+  );
+};
 
 export default AboutPage;

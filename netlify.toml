@@ -1,0 +1,14 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[context.production.environment]
+# Example: set NODE_ENV or other env vars here if needed
+# NODE_ENV = "production"
+
+[dev]
+  command = "npm run dev"
+  port = 5173
+
+[redirects]
+# Using _redirects file from /public/ is preferred for simple SPA rules

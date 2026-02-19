@@ -65,14 +65,14 @@ const TimelineSection = () => {
   const smoothHeight = useSpring(lineHeight, { stiffness: 60, damping: 30 });
 
   return (
-    <section id="story" ref={containerRef} className="relative py-12 sm:py-16 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 mb-8 text-center">
+    <section id="story" ref={containerRef} className="relative w-full max-w-full py-8 sm:py-12 lg:py-16 overflow-x-hidden">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 mb-6 sm:mb-8 text-center">
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 1, ease: EASE }}
-          className="font-sans text-xs tracking-[0.4em] uppercase text-gallery-accent mb-4"
+          className="font-sans text-xs tracking-[0.3em] sm:tracking-[0.4em] uppercase text-gallery-accent mb-4"
         >
           Chronicle
         </motion.p>
@@ -82,19 +82,19 @@ const TimelineSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 1.2, ease: EASE, delay: 0.1 }}
-          className="font-serif text-4xl sm:text-5xl lg:text-6xl text-gallery-dark"
+          className="font-serif text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-gallery-dark"
         >
           The Zigguratss <span className="italic text-gallery-accent">Chronicle</span>
         </motion.h2>
       </div>
 
-      <div className="relative max-w-5xl mx-auto px-6 sm:px-10 lg:px-16">
-        <div className="absolute left-6 sm:left-10 lg:left-16 top-0 bottom-0 w-px">
+      <div className="relative w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-10">
+        <div className="absolute left-4 sm:left-6 lg:left-8 xl:left-10 top-0 bottom-0 w-px">
           <div className="h-full w-full bg-gallery-subtle" />
           <motion.div style={{ height: smoothHeight }} className="absolute top-0 left-0 w-full bg-gallery-accent origin-top" />
         </div>
 
-        <div className="space-y-8 sm:space-y-12">
+        <div className="space-y-6 sm:space-y-8 lg:space-y-12">
           {timelineData.map((item, i) => (
             <TimelineMilestone key={i} item={item} index={i} />
           ))}
@@ -111,7 +111,7 @@ const TimelineMilestone = ({ item, index }) => {
   const rowReverse = index % 2 === 1 ? 'lg:flex-row-reverse' : '';
 
   return (
-    <div ref={ref} className={`relative pl-12 sm:pl-16`}>
+    <div ref={ref} className={`relative pl-8 sm:pl-12 lg:pl-16 w-full max-w-full`}>
       {/* Dot on timeline */}
       <motion.div
         initial={{ scale: 0 }}
@@ -123,7 +123,7 @@ const TimelineMilestone = ({ item, index }) => {
         <div className="absolute inset-0 rounded-full bg-gallery-accent/30 animate-ping" />
       </motion.div>
 
-      <div className={`relative z-0 flex flex-col lg:flex-row items-start gap-6 ${rowReverse}`}>
+      <div className={`relative z-0 flex flex-col lg:flex-row items-start gap-4 sm:gap-6 ${rowReverse} w-full max-w-full`}>
         {/* Side image */}
         {item.image && (
           <figure className="w-full lg:w-1/3 rounded-lg overflow-hidden">
@@ -131,19 +131,19 @@ const TimelineMilestone = ({ item, index }) => {
               src={item.image}
               alt={item.title}
               loading="lazy"
-              className="w-full h-48 sm:h-64 lg:h-56 object-cover rounded-md shadow-sm"
+              className="w-full h-40 sm:h-48 md:h-56 lg:h-56 object-cover rounded-md shadow-sm"
               onError={(e) => { e.currentTarget.style.display = 'none'; }}
             />
           </figure>
         )}
 
         {/* Text content */}
-        <div className="w-full lg:w-2/3">
+        <div className="w-full lg:w-2/3 max-w-full">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, ease: EASE, delay: 0.1 }}
-            className="font-sans text-[10px] tracking-[0.4em] uppercase text-gallery-accent mb-3"
+            className="font-sans text-[10px] tracking-[0.3em] sm:tracking-[0.4em] uppercase text-gallery-accent mb-3"
           >
             {item.year}
           </motion.div>
@@ -152,7 +152,7 @@ const TimelineMilestone = ({ item, index }) => {
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 1, ease: EASE, delay: 0.2 }}
-            className="font-serif text-2xl sm:text-3xl lg:text-4xl text-gallery-dark mb-4"
+            className="font-serif text-xl sm:text-2xl lg:text-3xl xl:text-4xl text-gallery-dark mb-4"
           >
             {item.title}
           </motion.h3>
@@ -161,7 +161,7 @@ const TimelineMilestone = ({ item, index }) => {
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, ease: EASE, delay: 0.4 }}
-            className="font-sans text-base text-gallery-muted leading-[1.6]"
+            className="font-sans text-sm sm:text-base text-gallery-muted leading-[1.6] break-words"
           >
             {item.content}
           </motion.p>
@@ -170,7 +170,7 @@ const TimelineMilestone = ({ item, index }) => {
             initial={{ scaleX: 0 }}
             animate={inView ? { scaleX: 1 } : {}}
             transition={{ duration: 1, ease: EASE, delay: 0.6 }}
-            className="mt-8 h-px w-24 bg-gallery-subtle origin-left"
+            className="mt-6 sm:mt-8 h-px w-16 sm:w-24 bg-gallery-subtle origin-left"
           />
         </div>
       </div>
@@ -293,6 +293,102 @@ const artworks = [
   },
 ];
 
+/* ═══════════════════════════════════════════════════
+   ARTWORK GALLERY SECTION WITH RESPONSIVE GRID
+   ═══════════════════════════════════════════════════ */
+const ArtworkGallerySection = () => {
+  return (
+    <section className="relative w-full max-w-full py-16 sm:py-20 lg:py-24 bg-white">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
+        <div className="mb-12 text-center">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, ease: EASE }}
+            className="font-sans text-xs tracking-[0.4em] uppercase text-gallery-accent mb-4"
+          >
+            Curated Collection
+          </motion.p>
+          <motion.h2
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.2, ease: EASE, delay: 0.1 }}
+            className="font-serif text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-gallery-dark"
+          >
+            Featured <span className="italic text-gallery-accent">Artworks</span>
+          </motion.h2>
+        </div>
+
+        {/* Responsive Grid Layout */}
+        <div className="w-full max-w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          {artworks.map((artwork, index) => (
+            <ArtworkCard key={artwork.id} artwork={artwork} index={index} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const ArtworkCard = ({ artwork, index }) => {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, amount: 0.2 });
+
+  return (
+    <motion.article
+      ref={ref}
+      initial={{ opacity: 0, y: 60 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.8, ease: EASE, delay: index * 0.1 }}
+      className="group relative w-full max-w-full flex flex-col bg-white rounded-lg shadow-sm hover:shadow-2xl transition-shadow duration-500"
+    >
+      {/* Image Container */}
+      <div className="relative w-full aspect-[4/5] overflow-hidden rounded-t-lg">
+        <img
+          src={artwork.image}
+          alt={artwork.title}
+          loading="lazy"
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+          onError={(e) => { 
+            e.currentTarget.src = 'https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?q=80&w=600&auto=format';
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      </div>
+
+      {/* Content */}
+      <div className="flex-1 p-5 sm:p-6 flex flex-col">
+        <h3 className="font-serif text-xl sm:text-2xl text-gallery-dark mb-2 group-hover:text-gallery-accent transition-colors duration-300">
+          {artwork.title}
+        </h3>
+        
+        <p className="font-sans text-sm text-gallery-muted mb-3">
+          by {artwork.artist}
+        </p>
+        
+        <div className="mt-auto space-y-2">
+          <div className="flex items-center justify-between text-sm">
+            <span className="font-sans text-gallery-muted">{artwork.medium}</span>
+          </div>
+          
+          <div className="flex items-center justify-between text-sm">
+            <span className="font-sans text-gallery-muted">{artwork.dimensions}</span>
+          </div>
+          
+          <div className="pt-3 border-t border-gallery-subtle">
+            <p className="font-serif text-2xl text-gallery-dark font-semibold">
+              {artwork.price}
+            </p>
+          </div>
+        </div>
+      </div>
+    </motion.article>
+  );
+};
+
 
 // ═══════════════════════════════════════════════════
 // 3 · ABOUT PAGE FULL CONTENT SECTION (100% WIDTH)
@@ -307,17 +403,17 @@ const AboutContentSection = () => {
   const smoothY = useSpring(y, { stiffness: 80, damping: 35 });
 
   return (
-    <section className="w-full py-6 sm:py-10 bg-white">
-      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
-        <div className="grid grid-cols-1 lg:[grid-template-columns:40%_60%] gap-6 items-center">
+    <section className="w-full max-w-full pt-2 pb-6 sm:pb-10 bg-white overflow-x-hidden">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-10">
+        <div className="grid grid-cols-1 lg:grid-cols-[40%_60%] gap-6 lg:gap-8 items-center">
         {/* Text column */}
-        <div>
+        <div className="w-full max-w-full">
           <motion.p
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: EASE }}
-            className="font-sans text-xs tracking-[0.4em] uppercase text-gallery-accent mb-4"
+            className="font-sans text-xs tracking-[0.3em] sm:tracking-[0.4em] uppercase text-gallery-accent mb-4"
           >
             Welcome to Zigguratss
           </motion.p>
@@ -329,7 +425,7 @@ const AboutContentSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1, ease: EASE, delay: 0.1 }}
-            className="font-sans text-lg text-gallery-muted max-w-2xl mb-4"
+            className="font-sans text-base sm:text-lg text-gallery-muted w-full max-w-2xl mb-4"
           >
             We welcome Artists around the world to showcase their work here. Our aim and mission is to bring both the Artist's and Art lovers at one stage.
           </motion.p>
@@ -340,15 +436,15 @@ const AboutContentSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.15 }}
-            className="flex flex-wrap gap-4 items-center mb-4"
+            className="flex flex-wrap gap-3 sm:gap-4 items-center mb-4 w-full"
           >
             {[
               { label: '500+', sub: 'Original Works' },
               { label: '120+', sub: 'Global Artists' },
               { label: '30+', sub: 'Countries Served' },
             ].map((s) => (
-              <div key={s.label} className="flex-shrink-0 bg-gallery-accent/10 rounded-md px-4 py-3">
-                <div className="font-serif text-2xl text-gallery-dark font-semibold">{s.label}</div>
+              <div key={s.label} className="flex-shrink-0 bg-gallery-accent/10 rounded-md px-3 sm:px-4 py-2 sm:py-3">
+                <div className="font-serif text-xl sm:text-2xl text-gallery-dark font-semibold">{s.label}</div>
                 <div className="text-xs text-gallery-muted">{s.sub}</div>
               </div>
             ))}
@@ -359,10 +455,10 @@ const AboutContentSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.25 }}
-            className="flex flex-wrap gap-4"
+            className="flex flex-wrap gap-3 sm:gap-4 w-full"
           >
-            <a href="/artworks" className="px-6 py-3 bg-black text-white font-sans text-sm font-semibold rounded-none hover:scale-[1.01] transition-transform">Explore Collection</a>
-            <a href="#story" className="px-6 py-3 text-black underline font-sans text-sm font-semibold rounded-md hover:bg-gallery-accent/5 transition-colors">Our Story</a>
+            <a href="/artworks" className="px-4 sm:px-6 py-2 sm:py-3 bg-black text-white font-sans text-xs sm:text-sm font-semibold rounded-none hover:scale-[1.01] transition-transform">Explore Collection</a>
+            <a href="#story" className="px-4 sm:px-6 py-2 sm:py-3 text-black underline font-sans text-xs sm:text-sm font-semibold rounded-md hover:bg-gallery-accent/5 transition-colors">Our Story</a>
           </motion.div>
         </div>
 
@@ -373,7 +469,7 @@ const AboutContentSection = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 1, ease: EASE, delay: 0.1 }}
-          className="w-full rounded-lg overflow-hidden shadow-lg"
+          className="w-full max-w-full rounded-lg overflow-hidden shadow-lg"
         >
           <motion.img
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Abraham_Mignon_-_Flowers_in_a_metal_vase.jpg/500px-Abraham_Mignon_-_Flowers_in_a_metal_vase.jpg?20190327095151"
@@ -381,7 +477,7 @@ const AboutContentSection = () => {
             loading="lazy"
             onError={(e) => { e.currentTarget.style.display = 'none'; }}
             style={{ y: smoothY }}
-            className="w-full h-[760px] md:h-[820px] lg:h-[880px] object-cover"
+            className="w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] xl:h-[700px] object-cover"
           />
         </motion.div>
       </div>
@@ -404,7 +500,7 @@ const QuoteBreak = () => {
   return (
     <section
       ref={ref}
-      className="relative py-12 sm:py-16 overflow-hidden bg-gallery-dark"
+      className="relative w-full max-w-full py-12 sm:py-16 bg-gallery-dark"
     >
       <div className="absolute inset-0 bg-grain opacity-40" />
 
@@ -491,7 +587,7 @@ const teamMembers = [
 ];
 
 const TeamSection = () => (
-  <section className="relative py-12 sm:py-16 overflow-hidden">
+  <section className="relative w-full max-w-full py-12 sm:py-16">
     {/* Section header */}
     <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 mb-6">
       <motion.p
@@ -549,10 +645,10 @@ const TeamCard = ({ member, index }) => {
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.8, ease: EASE, delay: index * 0.2 }}
       whileHover={{ scale: 1.05, boxShadow: '0 20px 40px rgba(0,0,0,0.12)' }}
-      className="group relative"
+      className="group relative w-full max-w-full"
       data-magnetic
     >
-      <div className="relative overflow-visible rounded-2xl transition-all duration-700">
+      <div className="relative transition-all duration-700">
         <div
           className="relative overflow-hidden rounded-2xl p-6 sm:p-8"
           style={{
@@ -716,7 +812,7 @@ const ClosingCTA = () => {
   const bgY = useTransform(scrollYProgress, [0, 1], ['-10%', '10%']);
 
   return (
-    <section ref={ref} className="relative py-12 sm:py-16 overflow-hidden bg-gallery-dark">
+    <section ref={ref} className="relative w-full max-w-full py-12 sm:py-16 bg-gallery-dark">
       {/* Parallax background image */}
       <motion.div
         style={{ y: bgY }}
@@ -1002,7 +1098,7 @@ const artForms = [
 ];
 
 const ArtworksBriefSection = () => (
-  <RevealOnScroll as="section" className="relative py-32 sm:py-40 bg-gallery-warm overflow-hidden">
+  <RevealOnScroll as="section" className="relative w-full max-w-full py-32 sm:py-40 bg-gallery-warm">
     <div className="absolute inset-0 bg-grain opacity-20 pointer-events-none" />
     <div className="relative z-10 max-w-6xl mx-auto px-6 sm:px-10 lg:px-16">
       <RevealOnScroll>
@@ -1075,121 +1171,48 @@ const ArtworksBriefSection = () => (
 const AboutPage = () => {
   const containerRef = useRef(null);
 
-  useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-
-    let isThrottled = false;
-    let touchStartY = 0;
-
-    const getSections = () => Array.from(container.querySelectorAll('section.snap-start'));
-
-    const clamp = (n) => Math.max(0, Math.min(getSections().length - 1, n));
-
-    function getCurrentIndex() {
-      const scroll = container.scrollTop;
-      const secs = getSections();
-      let idx = 0;
-      for (let i = 0; i < secs.length; i++) {
-        if (scroll >= secs[i].offsetTop - 2) idx = i;
-      }
-      return idx;
-    }
-
-    function scrollToIndex(i) {
-      const secs = getSections();
-      const target = secs[clamp(i)];
-      if (target) target.scrollIntoView({ behavior: 'smooth' });
-    }
-
-    function onWheel(e) {
-      e.preventDefault();
-      if (isThrottled) return;
-      isThrottled = true;
-      const delta = e.deltaY;
-      const idx = getCurrentIndex();
-      if (delta > 0) scrollToIndex(idx + 1);
-      else if (delta < 0) scrollToIndex(idx - 1);
-      setTimeout(() => (isThrottled = false), 600);
-    }
-
-    function onTouchStart(e) {
-      touchStartY = e.touches[0].clientY;
-    }
-
-    function onTouchEnd(e) {
-      const delta = touchStartY - e.changedTouches[0].clientY;
-      if (Math.abs(delta) < 50) return;
-      const idx = getCurrentIndex();
-      if (delta > 0) scrollToIndex(idx + 1);
-      else scrollToIndex(idx - 1);
-    }
-
-    container.addEventListener('wheel', onWheel, { passive: false });
-    container.addEventListener('touchstart', onTouchStart, { passive: true });
-    container.addEventListener('touchend', onTouchEnd, { passive: true });
-
-    return () => {
-      container.removeEventListener('wheel', onWheel);
-      container.removeEventListener('touchstart', onTouchStart);
-      container.removeEventListener('touchend', onTouchEnd);
-    };
-  }, []);
-
   return (
-    <main ref={containerRef} className="h-screen w-full overflow-y-scroll snap-y snap-mandatory relative" style={{ touchAction: 'pan-y' }}>
+    <main ref={containerRef} className="relative w-full max-w-full min-h-screen overflow-x-hidden overflow-y-auto" style={{ touchAction: 'pan-y' }}>
       {/* Persistent fixed background layer */}
-      <div className="fixed inset-0 -z-10 bg-gallery-bg">
+      <div className="fixed inset-0 -z-10 bg-gallery-bg max-w-full">
         <div className="absolute inset-0 bg-gradient-to-b from-white/5 via-transparent to-white/5" />
       </div>
 
-      <div className="fixed top-6 left-0 right-0 z-40 pointer-events-none">
-        <div className="max-w-7xl mx-auto px-6 pointer-events-auto">
+      <div className="fixed top-0 sm:top-6 left-0 right-0 z-40 w-full max-w-full pointer-events-none">
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 pointer-events-auto">
           <Navbar />
         </div>
       </div>
 
-      <section className="h-screen w-full snap-start flex items-center justify-center">
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ amount: 0.5 }} className="w-full">
+      <div className="relative w-full max-w-full pt-16 sm:pt-20">
+        <div className="w-full max-w-full">
           <AboutContentSection />
-        </motion.div>
-      </section>
+        </div>
 
-      <section className="h-screen w-full snap-start flex items-center justify-center">
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ amount: 0.5 }} className="w-full">
+        <div className="w-full max-w-full">
           <TimelineSection />
-        </motion.div>
-      </section>
+        </div>
 
-      <section className="h-screen w-full snap-start flex items-center justify-center">
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ amount: 0.5 }} className="w-full">
+        <div className="w-full max-w-full">
           <ArtworksBriefSection />
-        </motion.div>
-      </section>
+        </div>
 
-      <section className="h-screen w-full snap-start flex items-center justify-center">
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ amount: 0.5 }} className="w-full">
+        <div className="w-full max-w-full">
           <QuoteBreak />
-        </motion.div>
-      </section>
+        </div>
 
-      <section className="h-screen w-full snap-start flex items-center justify-center">
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ amount: 0.5 }} className="w-full">
+        <div className="w-full max-w-full">
           <TeamSection />
-        </motion.div>
-      </section>
+        </div>
 
-      {/* ValuesSection removed per request */}
-
-      <section className="h-screen w-full snap-start flex items-center justify-center">
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ amount: 0.5 }} className="w-full">
+        <div className="w-full max-w-full">
           <ClosingCTA />
-        </motion.div>
-      </section>
+        </div>
 
-      <footer className="w-full">
-        <Footer />
-      </footer>
+        <footer className="w-full max-w-full">
+          <Footer />
+        </footer>
+      </div>
     </main>
   );
 };

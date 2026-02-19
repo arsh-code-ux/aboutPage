@@ -12,22 +12,54 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  max-width: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 body {
   margin: 0;
+  padding: 0;
   font-family: 'Inter', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
   background-color: #faf9f6;
   color: #1a1a1a;
   cursor: auto;
+  max-width: 100%;
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
 }
 
 #root {
   width: 100%;
+  max-width: 100%;
   min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Prevent horizontal overflow on all elements */
+img, video, iframe, embed, object {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Ensure all containers respect viewport width */
+section, div, main, article, aside, nav, header, footer {
+  max-width: 100%;
+}
+
+/* Fix for mobile devices */
+@media (max-width: 640px) {
+  html, body {
+    overflow-x: hidden;
+    position: relative;
+  }
 }
 
 /* Custom selection */
